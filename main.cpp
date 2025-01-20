@@ -1,5 +1,4 @@
 #include <windows.h>
-#include <stdio.h>
 
 #define X_0 76
 #define X_1 996
@@ -2866,10 +2865,9 @@ int S[2068][3] = {
 };
 
 int W_P[2068][4];
-
 int pos = 0;
 int pos_O_x = 76;
-int pos_O_y = 625;
+int pos_O_y = 620;
 
 int num = 0;
 int num_enter = 0;
@@ -2911,7 +2909,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 			
 		Draw(hdc);
 		
-		HPEN Maze_Board_G = CreatePen(PS_SOLID, 13, RGB(40, 152, 7));
+		HPEN Maze_Board_G = CreatePen(PS_SOLID, 10, RGB(40, 152, 7));
         for (int i = 0 ; i < 1161 ; i++){
         	if ((XY[i][1] > 65) and (XY[i][0] > 66)){
 		        SelectObject(hdc, Maze_Board_G);
@@ -2944,9 +2942,11 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					num++;
 				}
 				else {
+					W_P[pos][3] = pos_O_y;
+					pos++;
 					num_enter = 0;
 					MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
-			    	Sleep(1500);
+			    	Sleep(2000);
 			    	ExitProcess(0);
 				}
 			}
@@ -2954,16 +2954,17 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
     			if (pos_O_x < X_1){
     				if (num_enter == 1){
     					W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
-    					pos_O_x += 25;
+    					pos_O_x += 15;
     					W_P[pos][2] = pos_O_x;
     					num_enter = 0;
     					pos++;
 					}
 					else {
+						int pos__x = pos_O_x;
 			    		for (int i = 0 ; i < 1691 ; i++){
 			    			W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
 			    			if ((pos_O_y >= S[i][2] - 25) and (pos_O_y <= S[i][2])){
-			    				if ((pos_O_x >= S[i][0] + 5) and (pos_O_x <= S[i][1])){
+			    				if ((pos_O_x >= S[i][0]) and (pos_O_x <= S[i][1])){
 				    				pos_O_x += 5;
 				    				W_P[pos][2] = pos_O_x;
 				    				pos++;
@@ -2971,6 +2972,20 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 								}
 							}
 						}
+						if (pos__x == pos_O_x){
+							if(n == 0){
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+							}
+							else {
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+				    			Sleep(2000);
+				    			ExitProcess(0);
+							}
+						} 
 					}
 				}
 			}
@@ -2978,12 +2993,13 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 				if (pos_O_x > X_0) {
 					if (num_enter == 1){
 						W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
-    					pos_O_x -= 25;
+    					pos_O_x -= 15;
     					W_P[pos][2] = pos_O_x;
     					num_enter = 0;
     					pos++;
 					}
 					else {
+						int pos__x1 = pos_O_x;
 						for (int i = 0 ; i < 1691 ; i++){
 							W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
 		    				if ((pos_O_y > S[i][2] - 25) and (pos_O_y < S[i][2])){
@@ -2995,6 +3011,20 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 								}
 							}
 						}
+						if (pos__x1 == pos_O_x){
+							if(n == 0){
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+							}
+							else {
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+				    			Sleep(2000);
+				    			ExitProcess(0);
+							}
+						} 
 					}
 				}
 			}
@@ -3003,7 +3033,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
     			if (pos_O_y > Y_0) {
     				if (num_enter == 1){
     					W_P[pos][0] = pos_O_x,W_P[pos][2] = pos_O_x,W_P[pos][1] = pos_O_y;
-    					pos_O_y -= 35;
+    					pos_O_y -= 25;
     					W_P[pos][3] = pos_O_y;
 		    			pos++;
     					num_enter = 0;
@@ -3011,9 +3041,9 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					else {
 						W_P[pos][0] = pos_O_x,W_P[pos][2] = pos_O_x,W_P[pos][1] = pos_O_y;
 	    				for (int i = 0 ; i < 1162 ; i++){
-		    				if ((pos_O_x >= XY[i][0] - 5) and (pos_O_x <= XY[i][2] + 5)){
+		    				if ((pos_O_x >= XY[i][0]) and (pos_O_x <= XY[i][2])){
 		    					if ((pos_O_y >= XY[i][1]) and (pos_O_y <= XY[i][3])){
-		    						n = n + 1;
+		    						n = n + 5;
 		    						break;
 								}
 							} 
@@ -3024,19 +3054,27 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 		    				pos++;
 						}
 						else {
-							pos_O_y = pos_O_y;
-							W_P[pos][3] = pos_O_y;
-		    				pos++;
-						} 
+							if (n == 0){
+								pos_O_y;
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+				    			Sleep(2000);
+				    			ExitProcess(0);
+				    		}
+				    		else{
+				    			MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+							}
+						}
 					}
 				}
 			}
 			else if (wParam == VK_DOWN){
 				int n = 0;
-    			if (pos_O_y > Y_0) {
+    			if (pos_O_y < Y_1) {
     				if (num_enter == 1){
     					W_P[pos][0] = pos_O_x,W_P[pos][2] = pos_O_x,W_P[pos][1] = pos_O_y;
-    					pos_O_y += 35;
+    					pos_O_y += 25;
     					W_P[pos][3] = pos_O_y;
 		    			pos++;
     					num_enter = 0;
@@ -3044,7 +3082,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					else {
 						W_P[pos][0] = pos_O_x,W_P[pos][2] = pos_O_x,W_P[pos][1] = pos_O_y;
 						for (int i = 0 ; i < 1161 ; i++){
-		    				if ((pos_O_x >= XY[i][0] - 5) and (pos_O_x <= XY[i][2] + 5)){
+		    				if ((pos_O_x >= XY[i][0]) and (pos_O_x <= XY[i][2])){
 		    					if ((pos_O_y >= XY[i][1]) and (pos_O_y <= XY[i][3])){
 		    						n = n + 1;
 		    						break;
@@ -3057,10 +3095,19 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 		    				pos++;
 						}
 						else {
-							pos_O_y;
-							MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
-			    			Sleep(1500);
-			    			ExitProcess(0);
+							if (n == 0){
+								pos_O_y;
+								W_P[pos][3] = pos_O_y;
+		    					pos++;
+								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+				    			Sleep(2000);
+				    			ExitProcess(0);
+				    		}
+				    		else{
+				    			W_P[pos][3] = pos_O_y;
+		    					pos++;
+				    			MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+							}
 						}
 					}
 				}
