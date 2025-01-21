@@ -2973,9 +2973,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 							}
 						}
 						if (pos__x == pos_O_x){
-							if(n == 0){
-								W_P[pos][3] = pos_O_y;
-		    					pos++;
+							if(num == 0){
 								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 							else {
@@ -3012,9 +3010,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 							}
 						}
 						if (pos__x1 == pos_O_x){
-							if(n == 0){
-								W_P[pos][3] = pos_O_y;
-		    					pos++;
+							if(num == 0){
 								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 							else {
@@ -3054,16 +3050,16 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 		    				pos++;
 						}
 						else {
-							if (n == 0){
-								pos_O_y;
+							if (num == 0){
+								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+				    		}
+				    		else{
+				    			pos_O_y;
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
 								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
-				    		}
-				    		else{
-				    			MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 						}
 					}
@@ -3095,18 +3091,16 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 		    				pos++;
 						}
 						else {
-							if (n == 0){
-								pos_O_y;
+							if (num == 0){
+								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+				    		}
+				    		else{
+		    					pos_O_y;
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
 								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
-				    		}
-				    		else{
-				    			W_P[pos][3] = pos_O_y;
-		    					pos++;
-				    			MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 						}
 					}
