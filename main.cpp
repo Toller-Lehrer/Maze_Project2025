@@ -2874,19 +2874,19 @@ int pos_O_y = 620;
 int num = 0;
 int num_enter = 0;
 
-void Draw(HDC hdc){
-	Rectangle(hdc, pos_O_x , pos_O_y , pos_O_x + 10 , pos_O_y + 10);
+void Draw(HDC H___D){
+	Rectangle(H___D, pos_O_x , pos_O_y , pos_O_x + 10 , pos_O_y + 10);
 }
 
-LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	HDC hdc;
-    switch (uMsg) {
+LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
+    HDC hdc;
+    switch (U_M) {
     case WM_CREATE: {
 
         HRGN hRgn = CreateRoundRectRgn(20, 20, 400, 50, 50, 50);
         HWND Label = CreateWindow("STATIC", " Maze_Project_for_BP_Class                                           |                                     Teacher : Taybeh Rafiei                                  |                                       1403_1404 ",
             WS_VISIBLE | WS_CHILD, 15, 5, 1040, 20,
-            hwnd, nullptr, nullptr, nullptr);
+            H_W, nullptr, nullptr, nullptr);
         SetWindowRgn(Label, hRgn, TRUE);
         break;
     }
@@ -2897,12 +2897,12 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
         return 0;
 
     case WM_SIZE:
-        SetWindowPos(hwnd, NULL, 0, 0, 1080, 720, SWP_NOZORDER);
+        SetWindowPos(H_W, NULL, 0, 0, 1080, 720, SWP_NOZORDER);
         return 0;
 
     case WM_PAINT: {
         PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hwnd, &ps);
+        HDC hdc = BeginPaint(H_W, &ps);
         
         HPEN hPenRed = CreatePen(PS_SOLID, 5, RGB(255, 0, 0));
         SelectObject(hdc, hPenRed);
@@ -2928,17 +2928,17 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 	        }
 	    }
         
-        EndPaint(hwnd, &ps);
+        EndPaint(H_W, &ps);
         Sleep(500);
         break;
     }
     	case WM_KEYDOWN:
     		if (((pos_O_x > 496) and (pos_O_x < 516)) and (pos_O_y == 75)){
-    			MessageBox(hwnd, "Congratulations, champion!", "Winner", MB_OK);
+    			MessageBox(H_W, "Congratulations, champion!", "Winner", MB_OK);
     			Sleep(2000);
     			ExitProcess(0);
 			}	
-			if (wParam == VK_RETURN){
+			if (W___P == VK_RETURN){
 				if (num == 0) {
 					num_enter = 1;
 					num++;
@@ -2947,12 +2947,12 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					W_P[pos][3] = pos_O_y;
 					pos++;
 					num_enter = 0;
-					MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+					MessageBox(H_W, "Game Over!!!", "Noob", MB_OK);
 			    	Sleep(2000);
 			    	ExitProcess(0);
 				}
 			}
-    		else if (wParam == VK_RIGHT){
+    		else if (W___P == VK_RIGHT){
     			if (pos_O_x < X_1){
     				if (num_enter == 1){
     					W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
@@ -2986,12 +2986,12 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 						}
 						if (pos__x == pos_O_x){
 							if(num == 0){
-								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+								MessageBox(H_W, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 							else {
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
-								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+								MessageBox(H_W, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
 							}
@@ -2999,7 +2999,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					}
 				}
 			}
-			else if (wParam == VK_LEFT){
+			else if (W___P == VK_LEFT){
 				if (pos_O_x > X_0) {
 					if (num_enter == 1){
 						W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
@@ -3034,12 +3034,12 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 						}
 						if (pos__x1 == pos_O_x){
 							if(num == 0){
-								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+								MessageBox(H_W, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 							}
 							else {
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
-								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+								MessageBox(H_W, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
 							}
@@ -3047,7 +3047,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					}
 				}
 			}
-			else if (wParam == VK_UP){
+			else if (W___P == VK_UP){
 				int n = 0;
     			if (pos_O_y > Y_0) {
     				if (num_enter == 1){
@@ -3074,13 +3074,13 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 						}
 						else {
 							if (num == 0){
-								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+								MessageBox(H_W, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 				    		}
 				    		else{
 				    			pos_O_y;
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
-								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+								MessageBox(H_W, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
 							}
@@ -3088,7 +3088,7 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					}
 				}
 			}
-			else if (wParam == VK_DOWN){
+			else if (W___P == VK_DOWN){
 				int n = 0;
     			if (pos_O_y < Y_1) {
     				if (num_enter == 1){
@@ -3115,13 +3115,13 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 						}
 						else {
 							if (num == 0){
-								MessageBox(hwnd, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
+								MessageBox(H_W, "Please press Enter_key then press (Up_Down_Left_Right)_key", "Warning!!!", MB_OK);
 				    		}
 				    		else{
 		    					pos_O_y;
 								W_P[pos][3] = pos_O_y;
 		    					pos++;
-								MessageBox(hwnd, "Game Over!!!", "Noob", MB_OK);
+								MessageBox(H_W, "Game Over!!!", "Noob", MB_OK);
 				    			Sleep(2000);
 				    			ExitProcess(0);
 							}
@@ -3129,13 +3129,13 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
 					}
 				}
 			}
-			InvalidateRect(hwnd, NULL, TRUE);
+			InvalidateRect(H_W, NULL, TRUE);
 			break;
         case WM_ERASEBKGND:
         	{
-        	HDC hdc = (HDC)wParam;
+        	HDC hdc = (HDC)W___P;
         	RECT rect;
-        	GetClientRect(hwnd, &rect);
+        	GetClientRect(H_W, &rect);
         	HBRUSH brush = CreateSolidBrush(RGB(180, 170, 120));
         	FillRect(hdc, &rect, brush);
         	DeleteObject(brush);
@@ -3143,14 +3143,14 @@ LRESULT CALLBACK Window_and_Print_Board(HWND hwnd, UINT uMsg, WPARAM wParam, LPA
     		}
             return 0;
         }
-    return DefWindowProc(hwnd, uMsg, wParam, lParam);
+    return DefWindowProc(H_W, U_M, W___P, L___P);
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nShowCmd) {
     const char CLASS_NAME[] = "Sample Window Class";
 
     WNDCLASS wc = {};
-    wc.lpfnWndProc = Window_and_Print_Board;
+    wc.lpfnWndProc = Window_;
     wc.hInstance = hInstance;
     wc.lpszClassName = CLASS_NAME;
 
