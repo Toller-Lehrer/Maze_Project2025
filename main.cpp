@@ -1,4 +1,4 @@
-نه‍#include <windows.h>
+#include <windows.h>
 
 #define X_0 76
 #define X_1 996
@@ -1171,6 +1171,7 @@ int XY[2086][4] = {
 };
 
 int S[2068][3] = {
+{ 66, 1006, 625},
 { 496 ,506 ,75 },
 { 506 ,516 ,75 },
 { 76 ,86 ,100 },
@@ -2080,7 +2081,7 @@ int S[2068][3] = {
 { 956 ,966 ,600 },
 };
 
-int s[2068][3] = {
+int U[2068][3] = {
 { 66 ,76 ,75 },
 { 76 ,86 ,75 },
 { 86 ,96 ,75 },
@@ -2952,7 +2953,7 @@ LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
 			    	ExitProcess(0);
 				}
 			}
-    		else if (W___P == VK_RIGHT){
+    		else if (W___P == VK_RIGHT) {
     			if (pos_O_x < X_1){
     				if (num_enter == 1){
     					W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
@@ -2973,10 +2974,11 @@ LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
 				    				break;
 								}
 							}
-							for (int i = 0 ; i < 783 ; i++){
+						}
+						for (int i = 0 ; i < 783 ; i++){
 			    			W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
-			    			if ((pos_O_y >= s[i][2] - 20) and (pos_O_y <= s[i][2] - 5)){
-			    				if ((pos_O_x >= s[i][0]) and (pos_O_x <= s[i][1])){
+			    			if ((pos_O_y >= U[i][2] - 20) and (pos_O_y <= U[i][2] - 5)){
+			    				if ((pos_O_x >= U[i][0]) and (pos_O_x <= U[i][1])){
 				    				pos_O_x += 5;
 				    				W_P[pos][2] = pos_O_x;
 				    				pos++;
@@ -2995,7 +2997,7 @@ LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
 				    			Sleep(2000);
 				    			ExitProcess(0);
 							}
-						} 
+						}
 					}
 				}
 			}
@@ -3023,8 +3025,8 @@ LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
 						}
 						for (int i = 0 ; i < 1691 ; i++){
 							W_P[pos][0] = pos_O_x,W_P[pos][1] = pos_O_y,W_P[pos][3] = pos_O_y;
-		    				if ((pos_O_y > s[i][2] - 20) and (pos_O_y < s[i][2] - 5)){
-		    					if ((pos_O_x >= s[i][0] + 5) and (pos_O_x <= s[i][1])){
+		    				if ((pos_O_y > U[i][2] - 20) and (pos_O_y < U[i][2] - 5)){
+		    					if ((pos_O_x >= U[i][0] + 5) and (pos_O_x <= U[i][1])){
 		    						pos_O_x -= 5;
 		    						W_P[pos][2] = pos_O_x;
 		    						pos++;
@@ -3142,7 +3144,7 @@ LRESULT CALLBACK Window_(HWND H_W, UINT U_M, WPARAM W___P, LPARAM L___P) {
         	return 1;
     		}
             return 0;
-        }
+    }
     return DefWindowProc(H_W, U_M, W___P, L___P);
 }
 
