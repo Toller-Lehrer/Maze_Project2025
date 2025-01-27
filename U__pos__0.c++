@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-	ofstream file("S__pos__1.text");
+	ofstream file("U__pos__1.text");
 	// (75 - 625) , (66 - 1006)
 	long XY[2068][3];
 	long x = 66,y = 75,n = 0;
@@ -19,19 +19,19 @@ int main(){
 		else {
 			//cout << L[i];
 			if (L[i] == '|') x += 10;
-			else if (L[i] == '_') x += 10;
-			else if (L[i] == ' ') {
+			else if (L[i] == '_'){
 				XY[n][0] = x,XY[n][2] = y;
 				x += 10;
 				XY[n][1] = x;
 				n++;
 			}
+			else if (L[i] == ' ') x += 10;
 		}
 	}
 	file << "{";
 	for (int i = 0 ; i < n ; i++){
-	file << endl << "{" << " " << XY[i][0] << " ," << XY[i][1] << " ," << XY[i][2] << " }" << ","; 
+	file << endl << "{" << " " << XY[i][0] << " ," << XY[i][1] << " ," << XY[i][2] << " }" << "," ; 
 	}
-	file << "};";
+	file << endl << "};";
 	file.close();
 }
